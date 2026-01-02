@@ -1,4 +1,6 @@
 import React, { useState, useEffect, useRef } from 'react';
+import { getColombiaCementData, CementPlantData } from '../services/cementDatabase';
+import { generateSalesProposal, ProposalResult } from '../services/geminiService';
 
 interface Plant {
     id: string;
@@ -23,6 +25,16 @@ const ColombiaConnect: React.FC = () => {
     const [isAnalyzing, setIsAnalyzing] = useState(false);
     const [analysisComplete, setAnalysisComplete] = useState(false);
     
+    // Database State
+    const [loadingDb, setLoadingDb] = useState(false);
+    const [dbData, setDbData] = useState<CementPlantData[] | null>(null);
+
+    // Proposal State
+    const [isProposalModalOpen, setIsProposalModalOpen] = useState(false);
+    const [generatingProposal, setGeneratingProposal] = useState(false);
+    const [currentProposalData, setCurrentProposalData] = useState<ProposalResult | null>(null);
+    const [targetCompany, setTargetCompany] = useState<CementPlantData | null>(null);
+    
     // Console Logs State
     const [logs, setLogs] = useState<LogEntry[]>([]);
     const logsEndRef = useRef<HTMLDivElement>(null);
@@ -36,7 +48,7 @@ const ColombiaConnect: React.FC = () => {
         vibration: 2.1
     });
 
-    // Simulated Colombian Plants Data
+    // Simulated Colombian Plants Data (For the "Connected" dashboard view)
     const plants: Plant[] = [
         { id: 'p1', name: 'Planta Rio Claro', location: 'Antioquia', type: 'Integrated', status: 'Warning', ip: '192.168.10.45' },
         { id: 'p2', name: 'Planta Sogamoso', location: 'Boyacá', type: 'Integrated', status: 'Optimal', ip: '10.5.2.112' },
@@ -122,6 +134,42 @@ const ColombiaConnect: React.FC = () => {
         }, 4500);
     };
 
+    const handleLoadDatabase = async () => {
+        setLoadingDb(true);
+        setDbData(null);
+        try {
+            const result = await getColombiaCementData();
+            setDbData(result);
+        } catch (error) {
+            console.error("Database error", error);
+        } finally {
+            setLoadingDb(false);
+        }
+    };
+
+    const handleGenerateProposal = async (company: CementPlantData) => {
+        setTargetCompany(company);
+        setIsProposalModalOpen(true);
+        setGeneratingProposal(true);
+        setCurrentProposalData(null);
+
+        try {
+            const result = await generateSalesProposal(company.owner, `${company.city}, ${company.state}`, company.source);
+            setCurrentProposalData(result);
+        } catch (error) {
+            console.error("Proposal error", error);
+            // Fallback for error state
+            setCurrentProposalData({
+                analysis: "Error al analizar la web del cliente. Intente nuevamente.",
+                identified_needs: ["Reintente la conexión"],
+                email_subject: "Error de conexión",
+                email_body: "Por favor verifique su API Key o conexión a internet."
+            });
+        } finally {
+            setGeneratingProposal(false);
+        }
+    };
+
     // Helper to render telemetry bars
     const TelemetryBar = ({ label, value, max, unit, color }: any) => {
         const percent = Math.min(100, Math.max(0, (value / max) * 100));
@@ -140,8 +188,6 @@ const ColombiaConnect: React.FC = () => {
             </div>
         );
     };
-
-    const activePlantData = plants.find(p => p.id === selectedPlant);
 
     return (
         <div className="animate-fade-in bg-slate-50 dark:bg-slate-900 min-h-screen font-display">
@@ -417,6 +463,227 @@ const ColombiaConnect: React.FC = () => {
                 )}
             </div>
             
+            {/* Database Section */}
+            <div className="max-w-7xl mx-auto px-4 md:px-10 py-12">
+                <div className="bg-slate-900 rounded-xl overflow-hidden shadow-2xl border border-slate-700">
+                    <div className="p-6 md:p-8 border-b border-slate-800 flex flex-col md:flex-row justify-between items-center gap-6">
+                        <div>
+                            <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-blue-500/20 text-blue-400 border border-blue-500/30 text-xs font-bold uppercase tracking-wider mb-2">
+                                <span className="material-symbols-outlined text-sm">database</span>
+                                Source: Global Cement Directory
+                            </div>
+                            <h2 className="text-2xl font-black text-white">Directorio Industrial Global</h2>
+                            <p className="text-slate-400 max-w-xl mt-2">
+                                Base de datos oficial de plantas de cemento en Colombia, extraída del Global Cement Directory.
+                            </p>
+                        </div>
+                        <button 
+                            onClick={handleLoadDatabase}
+                            disabled={loadingDb}
+                            className="bg-blue-600 hover:bg-blue-500 text-white px-6 py-3 rounded-lg font-bold flex items-center gap-2 transition-all disabled:opacity-50 disabled:cursor-not-allowed shadow-lg shadow-blue-600/20"
+                        >
+                            {loadingDb ? (
+                                <>
+                                    <span className="w-4 h-4 border-2 border-white/30 border-t-white rounded-full animate-spin"></span>
+                                    Cargando Datos...
+                                </>
+                            ) : (
+                                <>
+                                    <span className="material-symbols-outlined">table_view</span>
+                                    Consultar Base de Datos
+                                </>
+                            )}
+                        </button>
+                    </div>
+
+                    <div className="p-0 bg-slate-900">
+                        {!dbData && !loadingDb && (
+                            <div className="p-12 text-center text-slate-500 border-t border-dashed border-slate-800">
+                                <span className="material-symbols-outlined text-4xl mb-2 opacity-50">dataset</span>
+                                <p>Haga clic en "Consultar Base de Datos" para ver el registro completo.</p>
+                            </div>
+                        )}
+
+                        {dbData && (
+                            <div className="animate-fade-in">
+                                <div className="overflow-x-auto max-h-[600px] overflow-y-auto custom-scrollbar">
+                                    <table className="w-full text-left text-sm text-slate-400">
+                                        <thead className="bg-slate-800/80 backdrop-blur-md sticky top-0 z-10 text-slate-200 font-bold uppercase text-xs shadow-sm">
+                                            <tr>
+                                                <th className="px-6 py-4">Empresa / Propietario</th>
+                                                <th className="px-6 py-4">Ubicación (Ciudad, Depto)</th>
+                                                <th className="px-6 py-4">Tipo Planta</th>
+                                                <th className="px-6 py-4">Capacidad</th>
+                                                <th className="px-6 py-4">Fuente</th>
+                                                <th className="px-6 py-4 text-right">Acción</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody className="divide-y divide-slate-800">
+                                            {dbData.map((entry) => (
+                                                <tr key={entry.uid} className="hover:bg-slate-800/30 transition-colors">
+                                                    <td className="px-6 py-4">
+                                                        <div className="font-bold text-white">{entry.owner}</div>
+                                                        {entry.parent && entry.parent !== entry.owner && (
+                                                            <div className="text-xs text-slate-500 mt-1">Parent: {entry.parent}</div>
+                                                        )}
+                                                    </td>
+                                                    <td className="px-6 py-4 text-slate-300">
+                                                        <div className="flex items-center gap-1">
+                                                            <span className="material-symbols-outlined text-xs text-slate-500">location_on</span>
+                                                            {entry.city}, {entry.state}
+                                                        </div>
+                                                        <div className="text-[10px] text-slate-600 mt-1 font-mono">{entry.lat.toFixed(4)}, {entry.lng.toFixed(4)}</div>
+                                                    </td>
+                                                    <td className="px-6 py-4">
+                                                        <span className={`inline-flex items-center px-2 py-0.5 rounded text-xs font-medium ${
+                                                            entry.type === 'Integrated' 
+                                                            ? 'bg-green-500/10 text-green-400 border border-green-500/20' 
+                                                            : 'bg-blue-500/10 text-blue-400 border border-blue-500/20'
+                                                        }`}>
+                                                            {entry.type || 'Unknown'}
+                                                            {entry.production ? ` (${entry.production})` : ''}
+                                                        </span>
+                                                    </td>
+                                                    <td className="px-6 py-4 font-mono text-slate-300">
+                                                        {entry.capacity ? entry.capacity : '-'}
+                                                    </td>
+                                                    <td className="px-6 py-4">
+                                                        {entry.source ? (
+                                                            <a href={entry.source} target="_blank" rel="noreferrer" className="text-blue-400 hover:text-blue-300 font-bold text-xs inline-flex items-center gap-1 p-1 hover:bg-blue-400/10 rounded transition-colors">
+                                                                Link <span className="material-symbols-outlined text-[10px]">open_in_new</span>
+                                                            </a>
+                                                        ) : (
+                                                            <span className="text-slate-600 text-xs">No URL</span>
+                                                        )}
+                                                    </td>
+                                                    <td className="px-6 py-4 text-right">
+                                                        <button 
+                                                            onClick={() => handleGenerateProposal(entry)}
+                                                            className="inline-flex items-center justify-center p-2 rounded-lg bg-primary hover:bg-blue-600 text-white transition-colors group"
+                                                            title="Analizar Web y Redactar Propuesta"
+                                                        >
+                                                            <span className="material-symbols-outlined text-lg">auto_awesome</span>
+                                                        </button>
+                                                    </td>
+                                                </tr>
+                                            ))}
+                                        </tbody>
+                                    </table>
+                                </div>
+                                <div className="p-4 bg-slate-800/30 border-t border-slate-800 text-xs text-slate-500 flex justify-between items-center">
+                                    <span>Total Registros: {dbData.length}</span>
+                                    <span>Datos extraídos de archivo CSV oficial</span>
+                                </div>
+                            </div>
+                        )}
+                    </div>
+                </div>
+            </div>
+
+            {/* Proposal Modal */}
+            {isProposalModalOpen && targetCompany && (
+                <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/60 backdrop-blur-sm animate-fade-in">
+                    <div className="bg-white dark:bg-slate-900 w-full max-w-4xl max-h-[90vh] rounded-2xl shadow-2xl overflow-hidden flex flex-col border border-slate-200 dark:border-slate-700">
+                        {/* Modal Header */}
+                        <div className="p-6 border-b border-slate-200 dark:border-slate-700 flex justify-between items-center bg-slate-50 dark:bg-slate-800">
+                            <div>
+                                <h3 className="text-xl font-bold text-slate-900 dark:text-white">Generador de Inteligencia Comercial</h3>
+                                <p className="text-sm text-slate-500 flex items-center gap-1 mt-1">
+                                    Analizando: <span className="text-primary font-bold">{targetCompany.owner}</span>
+                                    <span className="mx-1">•</span>
+                                    {targetCompany.city}
+                                </p>
+                            </div>
+                            <button onClick={() => setIsProposalModalOpen(false)} className="text-slate-500 hover:text-slate-900 dark:hover:text-white p-2 hover:bg-slate-200 dark:hover:bg-slate-700 rounded-full transition-colors">
+                                <span className="material-symbols-outlined">close</span>
+                            </button>
+                        </div>
+                        
+                        {/* Modal Content */}
+                        <div className="flex-1 overflow-y-auto p-6 md:p-8 custom-scrollbar">
+                            {generatingProposal ? (
+                                <div className="flex flex-col items-center justify-center py-20 space-y-6">
+                                    <div className="relative">
+                                        <div className="w-16 h-16 border-4 border-slate-200 dark:border-slate-700 border-t-primary rounded-full animate-spin"></div>
+                                        <div className="absolute inset-0 flex items-center justify-center">
+                                            <span className="material-symbols-outlined text-primary text-xl">smart_toy</span>
+                                        </div>
+                                    </div>
+                                    <div className="text-center space-y-2">
+                                        <h4 className="text-lg font-bold text-slate-900 dark:text-white">Analizando Sitio Web...</h4>
+                                        <p className="text-slate-500 text-sm max-w-md mx-auto">
+                                            La IA está escaneando {targetCompany.source} en busca de proyectos recientes, reportes de sostenibilidad y objetivos corporativos para personalizar la propuesta.
+                                        </p>
+                                    </div>
+                                </div>
+                            ) : currentProposalData ? (
+                                <div className="grid lg:grid-cols-2 gap-8">
+                                    {/* Left: Analysis */}
+                                    <div className="space-y-6">
+                                        <div className="bg-blue-50 dark:bg-blue-900/10 p-5 rounded-xl border border-blue-100 dark:border-blue-900/30">
+                                            <div className="flex items-center gap-2 mb-3 text-blue-800 dark:text-blue-300">
+                                                <span className="material-symbols-outlined">analytics</span>
+                                                <h4 className="font-bold text-sm uppercase tracking-wide">Análisis Estratégico</h4>
+                                            </div>
+                                            <p className="text-sm text-slate-700 dark:text-slate-300 leading-relaxed">
+                                                {currentProposalData.analysis}
+                                            </p>
+                                        </div>
+
+                                        <div>
+                                            <h4 className="font-bold text-slate-900 dark:text-white text-sm uppercase tracking-wide mb-3 flex items-center gap-2">
+                                                <span className="material-symbols-outlined text-primary">target</span>
+                                                Oportunidades Detectadas
+                                            </h4>
+                                            <ul className="space-y-3">
+                                                {currentProposalData.identified_needs.map((need, idx) => (
+                                                    <li key={idx} className="flex gap-3 text-sm text-slate-600 dark:text-slate-400 bg-slate-50 dark:bg-slate-800 p-3 rounded-lg border border-slate-100 dark:border-slate-700">
+                                                        <span className="material-symbols-outlined text-green-500 shrink-0">check_circle</span>
+                                                        {need}
+                                                    </li>
+                                                ))}
+                                            </ul>
+                                        </div>
+                                    </div>
+
+                                    {/* Right: Email Draft */}
+                                    <div className="bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 rounded-xl shadow-sm overflow-hidden flex flex-col h-full">
+                                        <div className="bg-slate-100 dark:bg-slate-950 px-4 py-3 border-b border-slate-200 dark:border-slate-700 flex justify-between items-center">
+                                            <span className="text-xs font-bold text-slate-500 uppercase tracking-wide">Borrador de Correo</span>
+                                            <button className="text-primary hover:text-blue-600 text-xs font-bold flex items-center gap-1">
+                                                <span className="material-symbols-outlined text-sm">content_copy</span> Copiar
+                                            </button>
+                                        </div>
+                                        <div className="p-5 flex-1 flex flex-col gap-4">
+                                            <div>
+                                                <span className="text-xs text-slate-400 block mb-1">Asunto:</span>
+                                                <div className="font-bold text-slate-900 dark:text-white text-sm border-b border-slate-100 dark:border-slate-700 pb-2">
+                                                    {currentProposalData.email_subject}
+                                                </div>
+                                            </div>
+                                            <div className="text-sm text-slate-600 dark:text-slate-300 leading-relaxed whitespace-pre-wrap font-sans">
+                                                {currentProposalData.email_body}
+                                            </div>
+                                        </div>
+                                        <div className="p-4 bg-slate-50 dark:bg-slate-800/50 border-t border-slate-200 dark:border-slate-700 flex justify-end gap-3">
+                                            <button className="px-4 py-2 rounded-lg border border-slate-300 dark:border-slate-600 text-slate-600 dark:text-slate-300 text-sm font-bold hover:bg-slate-100 dark:hover:bg-slate-700">
+                                                Editar
+                                            </button>
+                                            <button className="px-4 py-2 rounded-lg bg-primary text-white text-sm font-bold hover:bg-blue-600 shadow-lg shadow-primary/20 flex items-center gap-2">
+                                                <span className="material-symbols-outlined text-lg">send</span>
+                                                Enviar Propuesta
+                                            </button>
+                                        </div>
+                                    </div>
+                                </div>
+                            ) : (
+                                <div className="text-center text-red-500">Error al cargar datos.</div>
+                            )}
+                        </div>
+                    </div>
+                </div>
+            )}
+
             {/* Trust Section */}
             <div className="bg-white dark:bg-slate-800 border-t border-slate-200 dark:border-slate-700 py-8 mt-8">
                 <div className="max-w-7xl mx-auto px-4 md:px-10 text-center">

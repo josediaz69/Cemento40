@@ -10,6 +10,11 @@ import CFD from './pages/CFD';
 import Projects from './pages/Projects';
 import About from './pages/About';
 import ColombiaConnect from './pages/ColombiaConnect';
+import Commissioning from './pages/Commissioning';
+import Optimization from './pages/Optimization';
+import Audits from './pages/Audits';
+import InfoReengineering from './pages/InfoReengineering';
+import Electrical from './pages/Electrical';
 
 // Placeholder components for other pages
 const PlaceholderPage = ({ title }: { title: string }) => (
@@ -55,14 +60,14 @@ const App: React.FC = () => {
                         <Route path="/projects" element={<Projects />} />
                         <Route path="/about" element={<About />} />
                         <Route path="/colombia" element={<ColombiaConnect />} />
+                        <Route path="/commissioning" element={<Commissioning />} />
+                        <Route path="/optimization" element={<Optimization />} />
+                        <Route path="/audits" element={<Audits />} />
+                        <Route path="/info-reengineering" element={<InfoReengineering />} />
+                        <Route path="/electrical" element={<Electrical />} />
                         
                         {/* Service Placeholders */}
-                        <Route path="/electrical" element={<PlaceholderPage title="Electrical Engineering" />} />
                         <Route path="/control" element={<PlaceholderPage title="Control Services" />} />
-                        <Route path="/optimization" element={<PlaceholderPage title="Plant Optimization" />} />
-                        <Route path="/commissioning" element={<PlaceholderPage title="Commissioning" />} />
-                        <Route path="/audits" element={<PlaceholderPage title="Technical Audits" />} />
-                        <Route path="/info-reengineering" element={<PlaceholderPage title="Information Reengineering" />} />
                         
                         {/* Other Pages */}
                         <Route path="/insights" element={<PlaceholderPage title="Industry Insights" />} />
