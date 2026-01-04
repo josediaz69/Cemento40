@@ -1,3 +1,4 @@
+
 // Data extracted from Global Cement Directory CSV (ISO3: COL)
 
 export interface CementPlantData {
@@ -264,11 +265,166 @@ export const COLOMBIA_CEMENT_DATA: CementPlantData[] = [
     }
 ];
 
+export const VENEZUELA_CEMENT_DATA: CementPlantData[] = [
+    {
+        uid: "GACTVEN0001",
+        city: "La Luna",
+        state: "Zulia",
+        owner: "Cementos Catatumbo SA",
+        parent: "Corporacion Socialista del Cemento SA",
+        type: "Integrated",
+        production: "Dry",
+        capacity: "0.65 Mt/yr",
+        source: "http://www.cementoscatatumbo.com/",
+        lat: 10.338289,
+        lng: -72.489518
+    },
+    {
+        uid: "GACTVEN0002",
+        city: "Piar",
+        state: "Monagas",
+        owner: "Corporacion Socialista del Cemento SA",
+        parent: "Corporacion Socialista del Cemento SA",
+        type: "Integrated",
+        production: "Dry",
+        capacity: "1 Mt/yr",
+        source: "http://www.cscvenezuela.com.ve/",
+        lat: 9.983709,
+        lng: -63.310672
+    },
+    {
+        uid: "GACTVEN0003",
+        city: "Barquisimeto",
+        state: "Lara",
+        owner: "Venezolana de Cementos SACA",
+        parent: "Corporacion Socialista del Cemento SA",
+        type: "Integrated",
+        production: "",
+        capacity: "0.49 Mt/yr",
+        source: "http://www.venceremos.com.ve/",
+        lat: 10.121046,
+        lng: -69.311738
+    },
+    {
+        uid: "GACTVEN0004",
+        city: "Maracaibo",
+        state: "Zulia",
+        owner: "Venezolana de Cementos SACA",
+        parent: "Corporacion Socialista del Cemento SA",
+        type: "Integrated",
+        production: "Wet",
+        capacity: "0.73 Mt/yr",
+        source: "http://www.venceremos.com.ve/",
+        lat: 10.565961,
+        lng: -71.61625
+    },
+    {
+        uid: "GACTVEN0005",
+        city: "Lander",
+        state: "Miranda",
+        owner: "Fabrica Nacional De Cementos SACA",
+        parent: "Corporacion Socialista del Cemento SA",
+        type: "Integrated",
+        production: "Dry",
+        capacity: "1.21 Mt/yr",
+        source: "http://www.fnc.com.ve/",
+        lat: 10.161419,
+        lng: -66.800027
+    },
+    {
+        uid: "GACTVEN0006",
+        city: "Guanta",
+        state: "Anzoátegui",
+        owner: "Venezolana de Cementos SACA",
+        parent: "Corporacion Socialista del Cemento SA",
+        type: "Integrated",
+        production: "Wet",
+        capacity: "2.68 Mt/yr",
+        source: "http://www.venceremos.com.ve/",
+        lat: 10.234351,
+        lng: -64.559127
+    },
+    {
+        uid: "GACTVEN0007",
+        city: "Táriba",
+        state: "Táchira",
+        owner: "Industria de Venezolana de Cemento SA",
+        parent: "Corporacion Socialista del Cemento SA",
+        type: "Integrated",
+        production: "",
+        capacity: "0.22 Mt/yr",
+        source: "http://www.invecem.com/",
+        lat: 7.863313,
+        lng: -72.257487
+    },
+    {
+        uid: "GACTVEN0008",
+        city: "Candelaria",
+        state: "Trujillo",
+        owner: "Corporacion Socialista del Cemento SA",
+        parent: "Corporacion Socialista del Cemento SA",
+        type: "Integrated",
+        production: "Dry",
+        capacity: "1.68 Mt/yr",
+        source: "http://www.cscvenezuela.com.ve/",
+        lat: 9.618822,
+        lng: -70.420148
+    },
+    {
+        uid: "GACTVEN0009",
+        city: "Zamora",
+        state: "Falcón",
+        owner: "Industria de Venezolana de Cemento SA",
+        parent: "Corporacion Socialista del Cemento SA",
+        type: "Integrated",
+        production: "Dry",
+        capacity: "1.59 Mt/yr",
+        source: "http://www.invecem.com/",
+        lat: 11.500079,
+        lng: -69.324507
+    },
+    {
+        uid: "GACTVEN0010",
+        city: "San Sebastián",
+        state: "Aragua",
+        owner: "Industria de Venezolana de Cemento SA",
+        parent: "Corporacion Socialista del Cemento SA",
+        type: "Integrated",
+        production: "Dry",
+        capacity: "2.71 Mt/yr",
+        source: "http://www.invecem.com/",
+        lat: 9.929924,
+        lng: -67.240061
+    },
+    {
+        uid: "GACTVEN0011",
+        city: "Ciudad Guayana",
+        state: "Bolívar",
+        owner: "Venezolana de Cementos SACA",
+        parent: "Corporacion Socialista del Cemento SA",
+        type: "Operating",
+        production: "",
+        capacity: "0.33 Mt/yr",
+        source: "http://www.venceremos.com.ve/",
+        lat: 8.300387,
+        lng: -62.824383
+    }
+];
+
 export const getColombiaCementData = async (): Promise<CementPlantData[]> => {
     // Simulate API delay for realism
     return new Promise((resolve) => {
         setTimeout(() => {
             resolve(COLOMBIA_CEMENT_DATA);
+        }, 1200);
+    });
+};
+
+export const getVenezuelaCementData = async (): Promise<CementPlantData[]> => {
+    // Simulate API delay for realism
+    return new Promise((resolve) => {
+        setTimeout(() => {
+            resolve(VENEZUELA_CEMENT_DATA);
         }, 1200);
     });
 };

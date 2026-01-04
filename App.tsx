@@ -10,6 +10,7 @@ import CFD from './pages/CFD';
 import Projects from './pages/Projects';
 import About from './pages/About';
 import ColombiaConnect from './pages/ColombiaConnect';
+import VenezuelaConnect from './pages/VenezuelaConnect';
 import Commissioning from './pages/Commissioning';
 import Optimization from './pages/Optimization';
 import Audits from './pages/Audits';
@@ -60,6 +61,7 @@ const App: React.FC = () => {
                         <Route path="/projects" element={<Projects />} />
                         <Route path="/about" element={<About />} />
                         <Route path="/colombia" element={<ColombiaConnect />} />
+                        <Route path="/venezuela" element={<VenezuelaConnect />} />
                         <Route path="/commissioning" element={<Commissioning />} />
                         <Route path="/optimization" element={<Optimization />} />
                         <Route path="/audits" element={<Audits />} />

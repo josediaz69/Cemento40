@@ -20,7 +20,7 @@ const Navbar: React.FC = () => {
                     </Link>
 
                     {/* Desktop Nav */}
-                    <nav className="hidden lg:flex items-center gap-8">
+                    <nav className="hidden lg:flex items-center gap-6">
                         <Link to="/" className={`text-sm font-medium transition-colors ${isActive('/') ? 'text-primary' : 'text-slate-600 dark:text-slate-300 hover:text-primary'}`}>Home</Link>
                         
                         {/* Dropdown for Services */}
@@ -44,11 +44,17 @@ const Navbar: React.FC = () => {
                         <Link to="/about" className={`text-sm font-medium transition-colors ${isActive('/about') ? 'text-primary' : 'text-slate-600 dark:text-slate-300 hover:text-primary'}`}>About Us</Link>
                         <Link to="/projects" className={`text-sm font-medium transition-colors ${isActive('/projects') ? 'text-primary' : 'text-slate-600 dark:text-slate-300 hover:text-primary'}`}>Projects</Link>
                         
-                        {/* Colombia Special Link */}
-                        <Link to="/colombia" className={`flex items-center gap-1 text-sm font-bold transition-colors ${isActive('/colombia') ? 'text-yellow-600 dark:text-yellow-400' : 'text-slate-600 dark:text-slate-300 hover:text-yellow-600 dark:hover:text-yellow-400'}`}>
-                             <span className="w-2 h-2 rounded-full bg-yellow-500"></span>
-                             Colombia
-                        </Link>
+                        {/* Portals */}
+                        <div className="flex items-center gap-3 border-l border-slate-200 dark:border-slate-700 pl-6">
+                             <Link to="/colombia" className={`flex items-center gap-1.5 text-xs font-bold uppercase transition-colors px-2 py-1 rounded hover:bg-yellow-50 dark:hover:bg-yellow-900/20 ${isActive('/colombia') ? 'text-yellow-600 dark:text-yellow-400' : 'text-slate-500 dark:text-slate-400'}`}>
+                                <span className="w-1.5 h-1.5 rounded-full bg-yellow-500"></span>
+                                Colombia
+                            </Link>
+                            <Link to="/venezuela" className={`flex items-center gap-1.5 text-xs font-bold uppercase transition-colors px-2 py-1 rounded hover:bg-red-50 dark:hover:bg-red-900/20 ${isActive('/venezuela') ? 'text-red-600 dark:text-red-400' : 'text-slate-500 dark:text-slate-400'}`}>
+                                <span className="w-1.5 h-1.5 rounded-full bg-red-500"></span>
+                                Venezuela
+                            </Link>
+                        </div>
                     </nav>
 
                     <div className="flex items-center gap-4">
@@ -82,9 +88,14 @@ const Navbar: React.FC = () => {
                         
                         <Link to="/about" onClick={() => setIsMenuOpen(false)} className={`text-sm font-medium ${isActive('/about') ? 'text-primary' : 'text-slate-900 dark:text-white'}`}>About Us</Link>
                         <Link to="/projects" onClick={() => setIsMenuOpen(false)} className={`text-sm font-medium ${isActive('/projects') ? 'text-primary' : 'text-slate-900 dark:text-white'}`}>Projects</Link>
-                        <Link to="/colombia" onClick={() => setIsMenuOpen(false)} className={`text-sm font-medium text-yellow-600 dark:text-yellow-400`}>Colombia Portal</Link>
                         
-                        <Link to="/contact" onClick={() => setIsMenuOpen(false)} className="w-full h-10 flex items-center justify-center rounded-lg bg-primary text-white font-bold text-sm hover:bg-primary/90">
+                        <div className="border-t border-slate-100 dark:border-slate-800 pt-4 flex flex-col gap-3">
+                            <span className="text-xs font-bold text-slate-400 uppercase">Regional Portals</span>
+                            <Link to="/colombia" onClick={() => setIsMenuOpen(false)} className={`text-sm font-bold text-yellow-600 dark:text-yellow-400`}>Colombia Portal</Link>
+                            <Link to="/venezuela" onClick={() => setIsMenuOpen(false)} className={`text-sm font-bold text-red-600 dark:text-red-400`}>Venezuela Portal</Link>
+                        </div>
+                        
+                        <Link to="/contact" onClick={() => setIsMenuOpen(false)} className="w-full h-10 flex items-center justify-center rounded-lg bg-primary text-white font-bold text-sm hover:bg-primary/90 mt-2">
                             Contact Us
                         </Link>
                     </nav>
