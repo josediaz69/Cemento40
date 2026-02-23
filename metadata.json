@@ -1,0 +1,6 @@
+
+{
+  "name": "Cemento40 - Industrial Engineering Solutions",
+  "description": "A comprehensive industrial engineering services platform for the cement and mining sectors, featuring process optimization, automation, and AI-powered technical assistance.",
+  "requestFramePermissions": ["microphone"]
+}
