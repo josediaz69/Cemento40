@@ -119,22 +119,22 @@ export const TEAM_MEMBERS: TeamMember[] = [
 
 export const IMAGES = {
   hero: "/images/cemento40.jpg",
-  balances: "https://lh3.googleusercontent.com/aida-public/AB6AXuAugMjm54yg_t86Z1iDF9kbTAIAnIK4-yL_sKYDpq-6mHN0MvpySxwZtrlBABP3NEsLC38aKSXpxMesqgvxHezbq3xx1tOVDfoDtX8E_PUe66dRLeaoq_6O56KvCFshVgnohmLvoirAkvDjA20-EtyaD0ELrONafAgew7dsuufiY_WxEjJKT-L-jHEAif3QvLhxVVfn-idP7GCpNzwdCOzq_T_QYs8pGmipOLKRQDF-s0WhpHau2_nj5YbkATTXAU8_l14ONTEjGBg",
-  hornos: "https://lh3.googleusercontent.com/aida-public/AB6AXuA-cGb7Fz5gYUJUcfwHhB-IgaAh-SXTMbcd9mEDQwGcde8yCXIAqU8e9BkeOZ-nfngrfszrVlqd3MakWZ4AzRBEK1611NBsJdZ0VSVJgqwdnCh6OejMaynKP1i8agcZfKPuFIewGBiPAWsyrVdov_Qm0_eqRwYjQGHSjXMVZ1zsqaSphyFF1S8b19G4sfoWB1nZ1WkAeS0YuJ60V41f5TZrdPwZuiuVdisLi_Od9i8z7zOQh18JZRcPttNFCPG9xv0sXAi5r8j8qA4",
-  molienda: "https://lh3.googleusercontent.com/aida-public/AB6AXuDNnUloRkbcxlyhH_rD_tcPbCPh7xjOvQ6qVZWGuuE8AF5sQxE2e0Ol_k3DgBwwc38e3VgkCtyF4RDBzwDAM4OZ7CFGpYUpgoJRJIvK1VscMECaDLlNoVeupLGlehckeYQKC-23TuN1x-YCW4pLdqo9e2CZY_qeHT4EmF4sd9O2ARBXTHUaaOTqwVL8533oqZy50tnS583ql1HF2gDRWGpxLAngOrxjts-pm-u8PzwCDAC-5fr0RJRUQy_LZQHqBNgPmN-8jmA6qmA",
-  controlRoom: "https://lh3.googleusercontent.com/aida-public/AB6AXuD2qelGGCxsKE35dMWZb1KOwHlDiTNAAZaUlCPqrlLT8rghjiXQENad_9UkRuOSRDPZv1DXB0ZlUS_RjNcHF5ZmHOITfz60wMoMW6605CjiA0yy-zN69SAcsF5YFAr41t_LLbsw-LKrBifVJIRHXn9M2NUl8Kqa3VLnf_wnc6NihMABRjQTsMq9Tzxf654OCSN1ZRjbgGslVZw7TqxJg1vdYM-ylgbggH45Nv5P7REvmAdT5UY0H6hz6wqGOGIQcrCqKNCaqB7YAEU",
-  digitalization: "https://lh3.googleusercontent.com/aida-public/AB6AXuCzL8IEmr-JMMYGGY5os-_PJiHNZzzYTllEDUtKjlRKaUnyugdn6tr6CqLngX1HKOXfk1EFdgE0fqTUS4v3fVWEf4ei1tgff5rzGaS6f09qVVmHrAm3sOPmRoGTEmsUUX7UNE9pGFV4e6OS6JgQPn3zy1Iom2np13Pl0vDqVKI_J-y8jFffMTR0Yi9QW1hcnDA-gtSijy9sw9mpWGMOknn9HDM-MwSUNaRBfk0VGXBsu2vZKfc-RgODiKPciOUlRZNrByF5SUJggao",
-  scan3d: "https://lh3.googleusercontent.com/aida-public/AB6AXuBRVWthWHgd9AyC_KWtKb1mXu0TgSZJUVFg0COnNFO_sWFgvdnLp2ceasX9qIikAHPtYIl12c2ljkGDVu52gW439Vhv_s1ZjbVz1M6DeRJO6t5mHoJk-_KkjpygXmUxlq_w6qtYJD8HcwYN52Ba7eXRJfuG6-AxSW3MqP2cMgdkGtzJC952m5pqMVk1dOEeAoHDvgz7lHyPJEJQLR0BSG9RhJOflQgTbgS02OTdBXTeA8ec5sL19PR54Oio_vziM5h6ayZ9L0c130E",
-  cfd: "https://images.unsplash.com/photo-1581092160562-40aa08e78837?auto=format&fit=crop&q=80&w=1000",
-  comisionamiento: "https://images.unsplash.com/photo-1513828583688-c52646db42da?auto=format&fit=crop&q=80&w=1000",
-  auditoria: "https://images.unsplash.com/photo-1454165833767-027eeed15689?auto=format&fit=crop&q=80&w=1000",
-  optimizacion: "https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&q=80&w=1000",
+  balances: "/images/balances.jpg",
+  hornos: "/images/horno.png",
+  molienda: "/images/molienda.jpg",
+  controlRoom: "/images/control_room.png",
+  digitalization: "/images/digitalizacion.png",
+  scan3d: "/images/scan_3d.png",
+  cfd: "/images/cfd.avif",
+  comisionamiento: "/images/comisionamiento.avif",
+  auditoria: "/images/auditoria.jpg",
+  optimizacion: "/images/optimizacion.avif",
 
   // CFD Demos
-  demoFlame: "https://images.unsplash.com/photo-1542125387-c71274d94f0a?auto=format&fit=crop&q=80&w=1000",
-  demoCyclone: "https://images.unsplash.com/photo-1504917595217-d4dc5ebe6122?auto=format&fit=crop&q=80&w=1000",
-  demoCooler: "https://images.unsplash.com/photo-1581093196277-9f608ebab48c?auto=format&fit=crop&q=80&w=1000",
-  industry40: "https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?auto=format&fit=crop&q=80&w=1000",
+  demoFlame: "/images/combustion_llama.jpg",
+  demoCyclone: "/images/separacion_ciclonica.jpg",
+  demoCooler: "/images/demo_cooler.jpg",
+  industry40: "/images/transporte_neumatico.jpg",
 };
 
 export const NAV_ITEMS: DetailedNavItem[] = [
@@ -157,7 +157,7 @@ export const NAV_ITEMS: DetailedNavItem[] = [
       { id: 'clinkerizacion', label: 'Clinkerización' },
       { id: 'molienda_finos', label: 'Sistemas de Molienda' },
       { id: 'afr_opt', label: 'Combustibles Alternos' },
-      { id: 'apc_kiln', label: 'Control Experto' }
+      { id: 'apc', label: 'Control Experto' }
     ]
   },
   {
