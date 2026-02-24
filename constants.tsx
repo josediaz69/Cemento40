@@ -83,22 +83,23 @@ export const PROJECTS: Project[] = [
 export const TEAM_MEMBERS: TeamMember[] = [
   {
     id: 'm1',
-    name: 'Dr. Roberto Mendoza',
+    name: 'Jose M. Diaz',
     role: 'Lead Process Engineer',
     education: [
-      'PhD en Termodinámica - Universidad Técnica de Clausthal, Alemania',
-      'Ingeniero Químico - Universidad Nacional de Colombia'
+      'Master Ingenieria Ambiental-Ingeniero Electronico - Universidad del Cauca-Colombia',
+      'Especialista en Machine Learning-Image Processing - Coursera U. Standford',
+      'Diseno de Software - Modelamiento con OpenFoam - IBM Rational Rose'
     ],
-    experience: '25+ años en optimización de hornos rotativos y balances térmicos globales (Ex-Holcim VDZ).',
+    experience: '30+ años en optimización de hornos rotativos y balances térmicos globales (Cemento Panam).',
     expertise: ['Balances de Masa', 'Combustión Alterna (AFR)', 'Puesta en Marcha']
   },
   {
     id: 'm2',
-    name: 'Ing. Sandra Valderrama',
-    role: 'CFD & Fluid Dynamics Specialist',
+    name: 'Ing. Jose Daniel Diaz',
+    role: 'Ingeniero de Proceso',
     education: [
-      'MSc en Mecánica de Fluidos Computacional - Politécnico de Milán',
-      'Ingeniera Mecánica - Universidad de los Andes'
+      'Ingeniero Industrial Universidad Madre y Maestra - Santiago, Re',
+      'Maestria en Energias Renovables - Universidad Catlica Madre y Maestra, Santiago '
     ],
     experience: 'Especialista en simulación numérica para la industria pesada. Experta en OpenFOAM y solvers multifásicos.',
     expertise: ['Modelado DPM', 'Intercambiadores de Calor', 'Diseño de Ciclones']
@@ -117,7 +118,7 @@ export const TEAM_MEMBERS: TeamMember[] = [
 ];
 
 export const IMAGES = {
-  hero: "https://lh3.googleusercontent.com/aida-public/AB6AXuBfsL3FRuJ_I7O5HEdvXyoHpy9jZYNFgNeSofnd5jXp5eNJ2Kh0U640292Z9CPJCjfKfBbjDsF5BdcQhxgEKgNURoTMEEpQmDQGdPs1PGTvkAdgVC19zK6WmsDtKrBzZyYYGa-5NT2J-cdmznGXaNyGc4x9V5Pv0_N-Da-T4kngFCSjOiWwI3UxizEa_YOy0jAvuNAeHU-ihyCqok5I5Nh18pfQpKFJXT-CV4wv7KmYVA9GeuXQT4yedwQ-_KJ_TLiNfaRJz5zn82Y",
+  hero: "/images/cemento40.jpg",
   balances: "https://lh3.googleusercontent.com/aida-public/AB6AXuAugMjm54yg_t86Z1iDF9kbTAIAnIK4-yL_sKYDpq-6mHN0MvpySxwZtrlBABP3NEsLC38aKSXpxMesqgvxHezbq3xx1tOVDfoDtX8E_PUe66dRLeaoq_6O56KvCFshVgnohmLvoirAkvDjA20-EtyaD0ELrONafAgew7dsuufiY_WxEjJKT-L-jHEAif3QvLhxVVfn-idP7GCpNzwdCOzq_T_QYs8pGmipOLKRQDF-s0WhpHau2_nj5YbkATTXAU8_l14ONTEjGBg",
   hornos: "https://lh3.googleusercontent.com/aida-public/AB6AXuA-cGb7Fz5gYUJUcfwHhB-IgaAh-SXTMbcd9mEDQwGcde8yCXIAqU8e9BkeOZ-nfngrfszrVlqd3MakWZ4AzRBEK1611NBsJdZ0VSVJgqwdnCh6OejMaynKP1i8agcZfKPuFIewGBiPAWsyrVdov_Qm0_eqRwYjQGHSjXMVZ1zsqaSphyFF1S8b19G4sfoWB1nZ1WkAeS0YuJ60V41f5TZrdPwZuiuVdisLi_Od9i8z7zOQh18JZRcPttNFCPG9xv0sXAi5r8j8qA4",
   molienda: "https://lh3.googleusercontent.com/aida-public/AB6AXuDNnUloRkbcxlyhH_rD_tcPbCPh7xjOvQ6qVZWGuuE8AF5sQxE2e0Ol_k3DgBwwc38e3VgkCtyF4RDBzwDAM4OZ7CFGpYUpgoJRJIvK1VscMECaDLlNoVeupLGlehckeYQKC-23TuN1x-YCW4pLdqo9e2CZY_qeHT4EmF4sd9O2ARBXTHUaaOTqwVL8533oqZy50tnS583ql1HF2gDRWGpxLAngOrxjts-pm-u8PzwCDAC-5fr0RJRUQy_LZQHqBNgPmN-8jmA6qmA",
@@ -128,17 +129,18 @@ export const IMAGES = {
   comisionamiento: "https://images.unsplash.com/photo-1513828583688-c52646db42da?auto=format&fit=crop&q=80&w=1000",
   auditoria: "https://images.unsplash.com/photo-1454165833767-027eeed15689?auto=format&fit=crop&q=80&w=1000",
   optimizacion: "https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&q=80&w=1000",
-  
+
   // CFD Demos
   demoFlame: "https://images.unsplash.com/photo-1542125387-c71274d94f0a?auto=format&fit=crop&q=80&w=1000",
   demoCyclone: "https://images.unsplash.com/photo-1504917595217-d4dc5ebe6122?auto=format&fit=crop&q=80&w=1000",
   demoCooler: "https://images.unsplash.com/photo-1581093196277-9f608ebab48c?auto=format&fit=crop&q=80&w=1000",
+  industry40: "https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?auto=format&fit=crop&q=80&w=1000",
 };
 
 export const NAV_ITEMS: DetailedNavItem[] = [
-  { 
-    id: 'proceso', 
-    label: 'Proceso', 
+  {
+    id: 'proceso',
+    label: 'Proceso',
     icon: 'factory',
     subItems: [
       { id: 'balances', label: 'Balances de Masa' },
@@ -147,9 +149,9 @@ export const NAV_ITEMS: DetailedNavItem[] = [
       { id: 'auditorias', label: 'Auditorías Energéticas' }
     ]
   },
-  { 
-    id: 'optimizacion_plantas', 
-    label: 'Optimización de Plantas', 
+  {
+    id: 'optimizacion_plantas',
+    label: 'Optimización de Plantas',
     icon: 'speed',
     subItems: [
       { id: 'clinkerizacion', label: 'Clinkerización' },
@@ -158,9 +160,9 @@ export const NAV_ITEMS: DetailedNavItem[] = [
       { id: 'apc_kiln', label: 'Control Experto' }
     ]
   },
-  { 
-    id: 'cfd', 
-    label: 'Modelamiento CFD', 
+  {
+    id: 'cfd',
+    label: 'Modelamiento CFD',
     icon: 'fluid_med',
     subItems: [
       { id: 'combustion', label: 'Combustión' },
@@ -169,9 +171,9 @@ export const NAV_ITEMS: DetailedNavItem[] = [
       { id: 'neumatico', label: 'Transporte Neumático' }
     ]
   },
-  { 
-    id: 'comisionamiento', 
-    label: 'Comisionamiento', 
+  {
+    id: 'comisionamiento',
+    label: 'Comisionamiento',
     icon: 'rocket_launch',
     subItems: [
       { id: 'pre-com', label: 'Pre-comisionamiento' },
@@ -180,9 +182,9 @@ export const NAV_ITEMS: DetailedNavItem[] = [
       { id: 'guarantee', label: 'Pruebas de Garantía' }
     ]
   },
-  { 
-    id: 'auditoria', 
-    label: 'Auditoría Técnica', 
+  {
+    id: 'auditoria',
+    label: 'Auditoría Técnica',
     icon: 'clinical_notes',
     subItems: [
       { id: 'asset-health', label: 'Salud de Activos' },
@@ -190,9 +192,9 @@ export const NAV_ITEMS: DetailedNavItem[] = [
       { id: 'bottleneck', label: 'Cuellos de Botella' }
     ]
   },
-  { 
-    id: 'automatizacion', 
-    label: 'Automatización', 
+  {
+    id: 'automatizacion',
+    label: 'Automatización',
     icon: 'memory',
     subItems: [
       { id: 'dcs', label: 'Sistemas DCS' },
@@ -200,9 +202,9 @@ export const NAV_ITEMS: DetailedNavItem[] = [
       { id: 'scada', label: 'HMI / SCADA' }
     ]
   },
-  { 
-    id: 'control', 
-    label: 'Control', 
+  {
+    id: 'control',
+    label: 'Control',
     icon: 'tune',
     subItems: [
       { id: 'pid', label: 'Sintonía PID' },
@@ -210,14 +212,25 @@ export const NAV_ITEMS: DetailedNavItem[] = [
       { id: 'instrumentacion', label: 'Instrumentación' }
     ]
   },
-  { 
-    id: 'reingenieria', 
-    label: 'Reingeniería', 
+  {
+    id: 'reingenieria',
+    label: 'Reingeniería',
     icon: 'topic',
     subItems: [
       { id: 'digitalizacion', label: 'Planos As-Built' },
       { id: 'escaneo', label: 'Nube de Puntos' },
       { id: 'bim', label: 'Modelado BIM' }
+    ]
+  },
+  {
+    id: 'industria40',
+    label: 'Industria 4.0',
+    icon: 'precision_manufacturing',
+    subItems: [
+      { id: 'gemelos-digitales', label: 'Gemelos Digitales' },
+      { id: 'ml-optimization', label: 'Machine Learning' },
+      { id: 'uns', label: 'Unified Namespace' },
+      { id: 'edge', label: 'Edge Computing' }
     ]
   },
 ];

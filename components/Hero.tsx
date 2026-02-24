@@ -5,7 +5,7 @@ import { IMAGES } from '../constants';
 const Hero: React.FC = () => {
   return (
     <div className="relative w-full">
-      <div 
+      <div
         className="w-full bg-cover bg-center bg-no-repeat h-[480px] md:h-[600px] flex items-center justify-center relative overflow-hidden"
         style={{ backgroundImage: `linear-gradient(rgba(0, 0, 0, 0.45) 0%, rgba(0, 0, 0, 0.75) 100%), url("${IMAGES.hero}")` }}
       >
@@ -15,15 +15,15 @@ const Hero: React.FC = () => {
               Ingeniería Integral para Minería y Cemento
             </span>
           </div>
-          
+
           <h1 className="text-white text-4xl md:text-6xl lg:text-7xl font-black leading-[1.1] tracking-tight max-w-4xl">
             Soluciones que <span className="text-primary italic">Transforman</span> la Industria
           </h1>
-          
+
           <p className="text-gray-100 text-lg md:text-xl font-medium max-w-2xl mx-auto leading-relaxed">
-            Expertos en Proceso, Automatización, Eléctrica, Control y Reingeniería para el sector industrial global.
+            Expertos en Proceso, Automatización, Industria 4.0, Eléctrica, Control y Reingeniería para el sector industrial global.
           </p>
-          
+
           <div className="flex flex-col sm:flex-row gap-4 mt-6">
             <button className="flex cursor-pointer items-center justify-center rounded-xl h-14 px-8 bg-primary hover:bg-blue-600 text-white text-base font-bold transition-all shadow-xl hover:shadow-primary/40 active:scale-95 group">
               Consultar experto
