@@ -134,7 +134,12 @@ export const IMAGES = {
   demoFlame: "/images/combustion_llama.jpg",
   demoCyclone: "/images/separacion_ciclonica.jpg",
   demoCooler: "/images/demo_cooler.jpg",
-  industry40: "/images/transporte_neumatico.jpg",
+  transporte: "/images/transporte_neumatico.jpg",
+  //Industry_4.0
+  gemelo: "images/gemelo_digital.jpg",
+  machine: "images/machine_learning.jpg",
+  unified: "images/unified_namespace.jpg",
+  edge: "images/edge_computing.jpg",
 };
 
 export const NAV_ITEMS: DetailedNavItem[] = [

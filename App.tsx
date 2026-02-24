@@ -792,7 +792,7 @@ const App: React.FC = () => {
                   <ServiceCard title="Separación Ciclónica" description="Modelado DPM para maximizar eficiencia de captura de polvos." icon="cyclone" image={IMAGES.demoCyclone} />
                 </div>
                 <div id="neumatico" className="scroll-mt-32">
-                  <ServiceCard title="Transporte Neumático" description="Cálculo en fase diluida y densa, diseño completo del proyecto." icon="air" image={IMAGES.industry40} />
+                  <ServiceCard title="Transporte Neumático" description="Cálculo en fase diluida y densa, diseño completo del proyecto." icon="air" image={IMAGES.transporte} />
                 </div>
               </div>
 
@@ -1012,7 +1012,7 @@ const App: React.FC = () => {
                     title="Gemelos Digitales"
                     desc="Réplicas virtuales sincronizadas con la planta física para simulación y predicción de escenarios operativos."
                     icon="dynamic_feed"
-                    image={IMAGES.industry40}
+                    image={IMAGES.gemelo}
                   />
                 </div>
                 <div id="ml-optimization" className="scroll-mt-32">
@@ -1020,7 +1020,7 @@ const App: React.FC = () => {
                     title="Machine Learning"
                     desc="Algoritmos avanzados para la detección temprana de fallas y optimización autónoma de procesos críticos."
                     icon="psychology"
-                    image={IMAGES.industry40}
+                    image={IMAGES.machine}
                   />
                 </div>
                 <div id="uns" className="scroll-mt-32">
@@ -1028,7 +1028,7 @@ const App: React.FC = () => {
                     title="Unified Namespace"
                     desc="Arquitectura de datos unificada para una interoperabilidad total entre el piso de planta y la gerencia."
                     icon="hub"
-                    image={IMAGES.industry40}
+                    image={IMAGES.unified}
                   />
                 </div>
                 <div id="edge" className="scroll-mt-32">
@@ -1036,7 +1036,7 @@ const App: React.FC = () => {
                     title="Edge Computing"
                     desc="Procesamiento de datos en el origen para respuestas de baja latencia y alta disponibilidad de información."
                     icon="router"
-                    image={IMAGES.industry40}
+                    image={IMAGES.edge}
                   />
                 </div>
               </div>
