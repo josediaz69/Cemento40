@@ -699,7 +699,7 @@ const App: React.FC = () => {
                 <ServiceCard title="Molienda de Crudo y Cemento" description="Optimización de carga de bolas y ajuste de separadores de alta eficiencia." image={IMAGES.molienda} />
               </div>
               <div id="auditorias" className="scroll-mt-32">
-                <ServiceCard title="Auditorías Energéticas" description="Evaluación de KPI térmicos y eléctricos para reducción de huella de carbono." image={IMAGES.optimizacion} />
+                <ServiceCard title="Auditorías Técnicas" description="Evaluación de KPI térmicos y eléctricos para reducción de huella de carbono." image={IMAGES.optimizacion} />
               </div>
             </div>
           </section>
@@ -917,8 +917,8 @@ const App: React.FC = () => {
                     <span className="material-symbols-outlined text-[24px]">memory</span>
                     <span className="uppercase tracking-[0.25em] text-[10px] font-black">Sistemas Industriales</span>
                   </div>
-                  <h2 className="text-3xl md:text-5xl font-black mb-6">Automatización DCS / PLC</h2>
-                  <p className="text-gray-400 text-lg mb-10">Integración de sistemas de control líderes (ABB 800xA, Siemens PCS7, Rockwell) para una operación centralizada y segura.</p>
+                  <h2 className="text-3xl md:text-4xl xl:text-5xl font-black mb-6 tracking-tight">Automatización DCS / PLC</h2>
+                  <p className="text-gray-400 text-lg mb-10 max-w-xl leading-relaxed">Integración de sistemas de control líderes (ABB 800xA, Siemens PCS7, Rockwell) para una operación centralizada y segura.</p>
                   <div className="flex flex-wrap gap-3">
                     {[
                       { id: 'dcs', label: 'DCS ABB' },

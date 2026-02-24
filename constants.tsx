@@ -56,7 +56,7 @@ export const PROJECTS: Project[] = [
     category: 'Kiln',
     description: 'Rediseño de flujos de aire secundario y terciario para mejorar la recuperación térmica.',
     kpi: '-12 kCal/kg clk',
-    image: 'https://images.unsplash.com/photo-1518709268805-4e9042af9f23?auto=format&fit=crop&q=80&w=800'
+    image: '/images/enfriador_clinker.jpg'
   },
   {
     id: 'p2',
@@ -66,7 +66,7 @@ export const PROJECTS: Project[] = [
     category: 'CFD',
     description: 'Modelamiento de pérdida de presión en ciclones de etapa 4 y 5 mediante OpenFOAM.',
     kpi: '-5 mbar ΔP',
-    image: 'https://images.unsplash.com/photo-1504917595217-d4dc5ebe6122?auto=format&fit=crop&q=80&w=800'
+    image: '/images/optimizacion_preca.jpg'
   },
   {
     id: 'p3',
@@ -76,7 +76,7 @@ export const PROJECTS: Project[] = [
     category: 'Audit',
     description: 'Balance de masa y energía en circuito cerrado con separador de alta eficiencia.',
     kpi: '+8 tph Producción',
-    image: 'https://images.unsplash.com/photo-1565608087341-404b254583c3?auto=format&fit=crop&q=80&w=800'
+    image: '/images/auditoria_integral_molienda.jpg'
   }
 ];
 
@@ -98,19 +98,20 @@ export const TEAM_MEMBERS: TeamMember[] = [
     name: 'Ing. Jose Daniel Diaz',
     role: 'Ingeniero de Proceso',
     education: [
-      'Ingeniero Industrial Universidad Madre y Maestra - Santiago, Re',
-      'Maestria en Energias Renovables - Universidad Catlica Madre y Maestra, Santiago '
+      'Ingeniero Industrial Universidad Madre y Maestra - Santiago, Republica Dominicana',
+      'Maestria en Energias Renovables - Universidad Catlica Madre y Maestra, Santiago, Republica Dominicana'
     ],
-    experience: 'Especialista en simulación numérica para la industria pesada. Experta en OpenFOAM y solvers multifásicos.',
-    expertise: ['Modelado DPM', 'Intercambiadores de Calor', 'Diseño de Ciclones']
+    experience: 'Especialista en ingenieria de Procesos y Comisionamiento.',
+    expertise: ['Molienda de Cemento', 'Intercambiadores de Calor', 'Clinkerizacion']
   },
   {
     id: 'm3',
-    name: 'Ing. Carlos Ruiz',
+    name: 'Ing. Andres Diaz Serna',
     role: 'Automation & Control Lead',
     education: [
-      'Especialización en Automatización Industrial - Universidad de São Paulo',
-      'Ingeniero Electrónico - Universidad Javeriana'
+      'Especialización en Ciencia de Datos - Coursera',
+      'Especialista en Networking, CCNA Cisco System',
+      'Ingeniero Telematico - Universidad Catolica Madre y Maestra, Santiago, Republica Dominicana'
     ],
     experience: 'Líder de migraciones DCS y control experto APC en más de 10 plantas de Latam.',
     expertise: ['Sistemas DCS ABB/Siemens', 'Control Avanzado (APC)', 'Sintonía PID']
