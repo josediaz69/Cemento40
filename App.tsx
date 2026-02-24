@@ -672,11 +672,33 @@ const App: React.FC = () => {
     }, 2500);
   };
 
+  const handleContactSubmit = (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+    const formData = new FormData(e.currentTarget);
+    const data = {
+      name: formData.get('name') as string,
+      company: formData.get('company') as string,
+      email: formData.get('email') as string,
+      area: formData.get('area') as string,
+      message: formData.get('message') as string,
+    };
+
+    const subject = `Nuevo Requerimiento Técnico - ${data.company}`;
+    const body = `Nombre: ${data.name}\nEmpresa: ${data.company}\nCorreo: ${data.email}\nÁrea de Interés: ${data.area}\n\nMensaje:\n${data.message}`;
+
+    const mailtoUrl = `mailto:josediaz@cemento40.com?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+
+    // Abrir cliente de correo
+    window.location.href = mailtoUrl;
+
+    alert('Se está abriendo su cliente de correo para enviar el requerimiento técnico. Por favor, complete el envío desde allí.');
+  };
+
   const renderHome = () => (
     <>
-      <Hero />
+      <Hero onConsultar={() => setCurrentPage('contacto')} />
       <div className="max-w-[1440px] mx-auto flex flex-col lg:flex-row py-12 px-4 lg:px-10 gap-12">
-        <Sidebar activeSection={activeSection} />
+        <Sidebar activeSection={activeSection} onContact={() => setCurrentPage('contacto')} />
         <main className="flex-1 flex flex-col gap-24 lg:gap-32 pb-24">
 
           {/* SECCIÓN 1: PROCESO */}
@@ -758,7 +780,10 @@ const App: React.FC = () => {
                         </div>
                       </div>
                     </div>
-                    <button className="mt-10 py-4 bg-white/10 hover:bg-white text-white hover:text-slate-900 rounded-2xl font-black text-xs tracking-widest transition-all border border-white/20 uppercase">
+                    <button
+                      onClick={() => setCurrentPage('contacto')}
+                      className="mt-10 py-4 bg-white/10 hover:bg-white text-white hover:text-slate-900 rounded-2xl font-black text-xs tracking-widest transition-all border border-white/20 uppercase"
+                    >
                       Solicitar Auditoría de Molienda
                     </button>
                   </div>
@@ -1039,6 +1064,28 @@ const App: React.FC = () => {
                     image={IMAGES.edge}
                   />
                 </div>
+              </div>
+            </div>
+          </section>
+
+          {/* Final Call to Action */}
+          <section className="pb-20">
+            <div className="bg-primary rounded-[50px] p-12 md:p-20 text-center relative overflow-hidden shadow-2xl shadow-primary/20">
+              <div className="absolute inset-0 opacity-10" style={{ backgroundImage: 'radial-gradient(circle at 2px 2px, white 1px, transparent 0)', backgroundSize: '24px 24px' }}></div>
+              <div className="relative z-10 flex flex-col items-center gap-8">
+                <h2 className="text-white text-4xl md:text-6xl font-black tracking-tighter max-w-4xl leading-tight">
+                  ¿Listo para llevar su planta al <span className="underline decoration-white/30 italic">siguiente nivel</span>?
+                </h2>
+                <p className="text-blue-100 text-lg md:text-xl font-medium max-w-2xl">
+                  Nuestros expertos están listos para realizar un diagnóstico técnico exhaustivo y proponer soluciones de alto impacto.
+                </p>
+                <button
+                  onClick={() => setCurrentPage('contacto')}
+                  className="bg-white text-primary px-10 py-5 rounded-2xl font-black text-sm uppercase tracking-widest shadow-xl hover:scale-105 transition-all active:scale-95 flex items-center gap-3"
+                >
+                  Consultar experto
+                  <span className="material-symbols-outlined">contact_support</span>
+                </button>
               </div>
             </div>
           </section>
@@ -1345,7 +1392,7 @@ const App: React.FC = () => {
                     </div>
                     <div>
                       <p className="text-gray-500 text-[10px] font-black uppercase tracking-widest mb-1">Consultoría Directa</p>
-                      <p className="text-white font-bold text-lg">josediaz69@gmail.com</p>
+                      <p className="text-white font-bold text-lg">josediaz@cemento40.com</p>
                     </div>
                   </div>
 
@@ -1400,26 +1447,26 @@ const App: React.FC = () => {
               <p className="text-gray-500 font-medium">Complete el perfil técnico para una respuesta especializada.</p>
             </div>
 
-            <form className="space-y-6">
+            <form onSubmit={handleContactSubmit} className="space-y-6">
               <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                 <div className="flex flex-col gap-2">
                   <label className="text-[10px] font-black text-gray-400 uppercase tracking-widest px-2">Nombre Completo</label>
-                  <input type="text" className="bg-gray-50 border border-gray-100 rounded-2xl px-5 py-4 text-sm font-medium focus:outline-none focus:border-primary focus:bg-white transition-all" placeholder="Ej: Ing. Carlos Pérez" />
+                  <input name="name" type="text" required className="bg-gray-50 border border-gray-100 rounded-2xl px-5 py-4 text-sm font-medium focus:outline-none focus:border-primary focus:bg-white transition-all" placeholder="Ej: Ing. Carlos Pérez" />
                 </div>
                 <div className="flex flex-col gap-2">
                   <label className="text-[10px] font-black text-gray-400 uppercase tracking-widest px-2">Empresa / Planta</label>
-                  <input type="text" className="bg-gray-50 border border-gray-100 rounded-2xl px-5 py-4 text-sm font-medium focus:outline-none focus:border-primary focus:bg-white transition-all" placeholder="Ej: Cementos Argos" />
+                  <input name="company" type="text" required className="bg-gray-50 border border-gray-100 rounded-2xl px-5 py-4 text-sm font-medium focus:outline-none focus:border-primary focus:bg-white transition-all" placeholder="Ej: Cementos Argos" />
                 </div>
               </div>
 
               <div className="flex flex-col gap-2">
                 <label className="text-[10px] font-black text-gray-400 uppercase tracking-widest px-2">Correo Corporativo</label>
-                <input type="email" className="bg-gray-50 border border-gray-100 rounded-2xl px-5 py-4 text-sm font-medium focus:outline-none focus:border-primary focus:bg-white transition-all" placeholder="c.perez@empresa.com" />
+                <input name="email" type="email" required className="bg-gray-50 border border-gray-100 rounded-2xl px-5 py-4 text-sm font-medium focus:outline-none focus:border-primary focus:bg-white transition-all" placeholder="c.perez@empresa.com" />
               </div>
 
               <div className="flex flex-col gap-2">
                 <label className="text-[10px] font-black text-gray-400 uppercase tracking-widest px-2">Área de Interés</label>
-                <select className="bg-gray-50 border border-gray-100 rounded-2xl px-5 py-4 text-sm font-medium focus:outline-none focus:border-primary focus:bg-white transition-all appearance-none cursor-pointer">
+                <select name="area" className="bg-gray-50 border border-gray-100 rounded-2xl px-5 py-4 text-sm font-medium focus:outline-none focus:border-primary focus:bg-white transition-all appearance-none cursor-pointer">
                   <option>Optimización de Hornos Rotativos</option>
                   <option>Eficiencia de Molienda</option>
                   <option>Simulación CFD / DPM</option>
@@ -1430,10 +1477,10 @@ const App: React.FC = () => {
 
               <div className="flex flex-col gap-2">
                 <label className="text-[10px] font-black text-gray-400 uppercase tracking-widest px-2">Mensaje Técnico</label>
-                <textarea rows={4} className="bg-gray-50 border border-gray-100 rounded-2xl px-5 py-4 text-sm font-medium focus:outline-none focus:border-primary focus:bg-white transition-all" placeholder="Describa brevemente el desafío técnico de su planta..."></textarea>
+                <textarea name="message" rows={4} required className="bg-gray-50 border border-gray-100 rounded-2xl px-5 py-4 text-sm font-medium focus:outline-none focus:border-primary focus:bg-white transition-all" placeholder="Describa brevemente el desafío técnico de su planta..."></textarea>
               </div>
 
-              <button className="w-full bg-primary text-white py-5 rounded-2xl font-black text-sm shadow-xl shadow-primary/30 hover:bg-blue-700 transition-all flex items-center justify-center gap-3 active:scale-95">
+              <button type="submit" className="w-full bg-primary text-white py-5 rounded-2xl font-black text-sm shadow-xl shadow-primary/30 hover:bg-blue-700 transition-all flex items-center justify-center gap-3 active:scale-95">
                 ENVIAR REQUERIMIENTO
                 <span className="material-symbols-outlined">send</span>
               </button>

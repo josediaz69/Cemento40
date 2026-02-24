@@ -4,9 +4,10 @@ import { NAV_ITEMS } from '../constants';
 
 interface SidebarProps {
   activeSection: string;
+  onContact?: () => void;
 }
 
-const Sidebar: React.FC<SidebarProps> = ({ activeSection }) => {
+const Sidebar: React.FC<SidebarProps> = ({ activeSection, onContact }) => {
   return (
     <aside className="hidden lg:flex w-72 flex-col gap-6 sticky top-24 self-start h-[calc(100vh-120px)]">
       <div className="flex flex-col bg-white p-6 rounded-3xl shadow-sm border border-gray-100 h-full">
@@ -21,8 +22,8 @@ const Sidebar: React.FC<SidebarProps> = ({ activeSection }) => {
               <a
                 href={`#${item.id}`}
                 className={`group flex items-center justify-between gap-3 px-4 py-3 rounded-2xl transition-all duration-300 border ${activeSection === item.id
-                    ? 'bg-primary text-white border-primary shadow-lg shadow-primary/20 scale-[1.02]'
-                    : 'text-gray-600 hover:bg-gray-50 hover:text-primary border-transparent'
+                  ? 'bg-primary text-white border-primary shadow-lg shadow-primary/20 scale-[1.02]'
+                  : 'text-gray-600 hover:bg-gray-50 hover:text-primary border-transparent'
                   }`}
               >
                 <div className="flex items-center gap-3">
@@ -61,7 +62,10 @@ const Sidebar: React.FC<SidebarProps> = ({ activeSection }) => {
           <div className="bg-primary/5 rounded-2xl p-4 border border-primary/10">
             <p className="text-[10px] font-black text-primary uppercase tracking-widest mb-2">Ayuda en Línea</p>
             <h4 className="text-gray-900 text-xs font-black mb-3">¿Necesitas un diagnóstico técnico?</h4>
-            <button className="w-full py-2.5 bg-white text-primary text-[10px] font-black rounded-xl shadow-sm border border-primary/10 hover:bg-primary hover:text-white transition-all">
+            <button
+              onClick={onContact}
+              className="w-full py-2.5 bg-white text-primary text-[10px] font-black rounded-xl shadow-sm border border-primary/10 hover:bg-primary hover:text-white transition-all"
+            >
               AGENDAR REUNIÓN
             </button>
           </div>

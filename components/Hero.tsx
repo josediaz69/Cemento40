@@ -2,7 +2,11 @@
 import React from 'react';
 import { IMAGES } from '../constants';
 
-const Hero: React.FC = () => {
+interface HeroProps {
+  onConsultar?: () => void;
+}
+
+const Hero: React.FC<HeroProps> = ({ onConsultar }) => {
   return (
     <div className="relative w-full">
       <div
@@ -25,7 +29,10 @@ const Hero: React.FC = () => {
           </p>
 
           <div className="flex flex-col sm:flex-row gap-4 mt-6">
-            <button className="flex cursor-pointer items-center justify-center rounded-xl h-14 px-8 bg-primary hover:bg-blue-600 text-white text-base font-bold transition-all shadow-xl hover:shadow-primary/40 active:scale-95 group">
+            <button
+              onClick={onConsultar}
+              className="flex cursor-pointer items-center justify-center rounded-xl h-14 px-8 bg-primary hover:bg-blue-600 text-white text-base font-bold transition-all shadow-xl hover:shadow-primary/40 active:scale-95 group"
+            >
               Consultar experto
               <span className="material-symbols-outlined ml-2 group-hover:translate-x-1 transition-transform">arrow_forward</span>
             </button>
