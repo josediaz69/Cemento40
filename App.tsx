@@ -1414,7 +1414,7 @@ const App: React.FC = () => {
                 <div className="mt-auto border-t border-white/5 pt-10">
                   <div className="flex items-center gap-4">
                     <div className="size-14 rounded-full overflow-hidden border-2 border-primary">
-                      <img src="https://images.unsplash.com/photo-1560250097-0b93528c311a?auto=format&fit=crop&q=80&w=200" alt="Jose M. Diaz" className="w-full h-full object-cover" />
+                      <img src="/images/jose_diaz.jpg" alt="Jose M. Diaz" className="w-full h-full object-cover" />
                     </div>
                     <div>
                       <h4 className="text-white font-black">Jose M. Diaz</h4>

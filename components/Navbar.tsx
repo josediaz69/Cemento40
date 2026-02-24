@@ -51,7 +51,7 @@ const Navbar: React.FC<NavbarProps> = ({ setPage, activePage }) => {
           <div className="size-10 flex items-center justify-center bg-primary/10 rounded-xl text-primary transition-transform group-hover:scale-110">
             <span className="material-symbols-outlined text-3xl font-bold">engineering</span>
           </div>
-          <h2 className="text-gray-900 text-2xl font-black tracking-tighter leading-none">Cemento40</h2>
+          <h2 className="text-gray-900 text-4xl font-black tracking-tighter leading-none">Cemento40</h2>
         </button>
 
         {/* Desktop Nav */}
